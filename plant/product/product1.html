@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="product1.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="title">
+                <a href="#">My Store</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../Homepage.html">Home</a></li>
+                    <li><a href="../Shop.html">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="product-container">
+            <div class="img">
+                <img src="product1.jpg" alt="Product Image">
+            </div>
+            <div class="details">
+                <span class="new">New Arrival</span>
+                <h2 class="product-name">Succulent Plants</h2>
+                <p class="product-price">$19.99</p>
+                <div class="product-rating">
+                    <span>⭐⭐⭐⭐☆</span>
+                </div>
+                <div class="quantity">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1">
+                </div>
+                <p class="about">About this item</p>
+                <p class="product-description">Beautiful succulent plants, perfect for home decor and easy to maintain.</p>
+                <div class="btn-groups">
+                    <button class="Add-to-Cart" onclick="location.href='product1.php'">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 My Store. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

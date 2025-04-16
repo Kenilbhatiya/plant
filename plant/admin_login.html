@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login - Plants Nursery</title>
+    <link rel="shortcut icon" type="image" href="logo3.jpg">
+    <link rel="stylesheet" href="Homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title {
+            flex: 0 0 auto;
+        }
+
+        .title a {
+            font-size: 24px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: flex-end;
+        }
+
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .login-container {
+            max-width: 400px;
+            width: 90%;
+            margin: 120px auto 40px;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-header img {
+            max-width: 120px;
+            margin-bottom: 1rem;
+        }
+
+        .login-header h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .login-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: #45a049;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .forgot-password a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .register-link a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .error-message {
+            color: #dc3545;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding: 12px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        footer {
+            margin-top: auto;
+            background: #f8f9fa;
+            padding: 2rem 0;
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            nav ul {
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .login-container {
+                margin: 100px auto 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="title">
+            <a href="Homepage.html">Plants Nursery</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="Homepage.html">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Handover.html">Handover</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <img src="logo3.jpg" alt="Plants Nursery Logo">
+            <h2>Admin Login</h2>
+        </div>
+        
+        <div class="error-message" id="errorMessage">
+            <span id="errorText"></span>
+        </div>
+
+        <form class="login-form" action="admin_login.php" method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="forgot-password">
+            <a href="forgot_password.php">Forgot Password?</a>
+        </div>
+
+        <div class="register-link">
+            <a href="admin_register.html">Create New Admin Account</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="BackToTop"><center><a href="Homepage.html"> BACK TO TOP </a></center></div>
+        <div class="main-content">
+            <div class="left box">
+                <h2>About us</h2>
+                <div class="content">
+                    <p>Plants Nursery Admin Portal</p>
+                    <p>Secure access to manage your plant nursery business</p>
+                    <div class="social">
+                        <a href="http://facebook.com/" target="_blank"><span class="fa fa-facebook"></span></a>
+                        <a href="http://twitter.com" target="_blank"><span class="fa fa-twitter"></span></a>
+                        <a href="http://instagram.com/1rithik1" target="_blank"><span class="fa fa-instagram"></span></a>
+                        <a href="http://linkedin.com" target="_blank"><span class="fa fa-linkedin"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="center box">
+                <h2>Address</h2>
+                <div class="content">
+                    <div class="place">
+                        <span class="fa fa-map-marker">&nbsp;</span>
+                        <span class="text"> Worli, Mumbai, Maharashtra, India </span>
+                    </div>
+                    <br>
+                    <div class="phone">
+                        <span class="fa fa-phone">&nbsp;</span>
+                        <span class="text"> +91 9004565911 </span>
+                    </div>
+                    <br>
+                    <div class="email">
+                        <span class="fa fa-envelope">&nbsp;</span>
+                        <span class="text"> swargam.rithik.19bit052@gmail.com </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <center>
+                <span class="credit">Created By Rithik Swargam</span>
+                <span class="fa fa-copyright"></span><span> 2024 All rights reserved.</span>
+            </center>
+        </div>
+    </footer>
+
+    <script>
+        // Show error message if present in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get('error');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+
+        if (error) {
+            errorMessage.classList.add('show');
+            switch(error) {
+                case 'empty':
+                    errorText.textContent = 'Please enter both username and password';
+                    break;
+                case 'invalid':
+                    errorText.textContent = 'Invalid username or password';
+                    break;
+                default:
+                    errorText.textContent = 'An error occurred. Please try again.';
+            }
+        }
+    </script>
+</body>
+</html> 

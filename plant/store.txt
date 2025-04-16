@@ -1,0 +1,43 @@
+-- Create Database
+CREATE DATABASE Plants_Nursery;
+
+-- Use the created Database
+USE Plants_Nursery;
+
+
+-- Create Table for OTP Verification (Forget Password System)
+CREATE TABLE otp_verification (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    otp INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY (email)
+);
+
+-- Create Table for User Registration
+CREATE TABLE registration (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    mobile VARCHAR(10) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Example Data Insertion
+-- INSERT INTO users (firstname, lastname, email, mobile, address, password)
+-- VALUES ('Harshal', 'Gondaliya', 'harshal@gmail.com', '1234567890', 'Anand, Gujarat', 'password123');
+
+-- Function to generate OTP (In Backend Application)
+-- 1. Insert generated OTP into `otp_verification`
+-- 2. Send OTP to user's email
+-- 3. User enters OTP for verification
+-- 4. If OTP is verified, allow password reset
+
+-- Forgot Password Flow Example:
+-- INSERT INTO otp_verification (email, otp_code) VALUES ('harshal@gmail.com', '123456');
+-- SELECT * FROM otp_verification WHERE email='harshal@gmail.com' AND otp_code='123456' AND is_verified=0;
+-- UPDATE otp_verification SET is_verified=1 WHERE email='harshal@gmail.com' AND otp_code='123456';
+-- UPDATE users SET password='newpassword' WHERE email='harshal@gmail.com';
