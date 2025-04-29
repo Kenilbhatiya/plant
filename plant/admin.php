@@ -287,7 +287,7 @@ $conn->close();
         <div class="admin-section">
             <div class="search-bar">
                 <h2>Product Management</h2>
-                <button class="admin-btn">Add New Product</button>
+                <button class="admin-btn"><a href="add_product.php">Add New Product</a></button>
             </div>
             <table class="admin-table">
                 <thead>
@@ -304,10 +304,12 @@ $conn->close();
                     <?php foreach ($products as $product): ?>
                     <tr>
                         <td>#<?php echo htmlspecialchars($product['product_id']); ?></td>
-                        <td><?php echo htmlspecialchars($product['name']); ?></td>
-                        <td><?php echo htmlspecialchars($product['category']); ?></td>
-                        <td>₹<?php echo number_format($product['price'], 2); ?></td>
-                        <td><?php echo htmlspecialchars($product['stock']); ?></td>
+                        <td><?php echo htmlspecialchars($product['product_name']); ?></td>
+                        <td><?php echo htmlspecialchars($product['product_category']); ?></td>
+                        <td><?php echo htmlspecialchars($product['product_description']); ?></td>
+                        <td>₹<?php echo number_format($product['product_price'], 2); ?></td>
+                        <td><?php echo htmlspecialchars($product['product_stock']); ?></td>
+                        <td><?php echo htmlspecialchars($product['product_image']); ?></td>
                         <td><button class="admin-btn">Edit</button></td>
                     </tr>
                     <?php endforeach; ?>
